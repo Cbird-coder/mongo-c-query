@@ -1,7 +1,8 @@
-/** ******************** *******
-**auther:caiyunlong.2017.06.29
-**email:ylcai@miivii.com
-*******************************/
+/**
+*Copyright (C) 2017
+*create by Caiyunlong
+*email:caiyunlong2012@gmail.com
+**/
 #ifndef FACEFEATURE_
 #define FACEFEATURE_
 #include "mongdb_face.h"

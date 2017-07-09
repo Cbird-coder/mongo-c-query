@@ -1,8 +1,8 @@
 /**
-***mongodb common use header
 *Copyright (C) 2017
 *create by Caiyunlong
-*/
+*email:caiyunlong2012@gmail.com
+**/
 #ifndef _DB_COMMON_
 #define _DB_COMMON_
 //CXX STL
