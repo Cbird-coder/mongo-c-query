@@ -17,5 +17,4 @@ using namespace std;
 using namespace cv;
 int Mat2binary(cv::Mat image,uint8_t *data_out);
 int binary2Mat(uint8_t *feature,cv::Mat &mat_out);
-    
 #endif //_MATTOSTR_H_H

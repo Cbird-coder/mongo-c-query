@@ -1,8 +1,8 @@
 /**
+***mongodb common use header
 *Copyright (C) 2017
 *create by Caiyunlong
-*email:caiyunlong2012@gmail.com
-**/
+*/
 #ifndef _DB_COMMON_
 #define _DB_COMMON_
 //CXX STL
@@ -26,10 +26,20 @@ using namespace cv;
 
 typedef struct databaseinfo
 {
+	string name;
     string gender;
     int id_p;
     int age;
-    int datalen;
-    vector<Mat> feature;
 } databaseinfo;
+typedef struct personquery
+{
+   string name;
+   int id;
+}personquery;
+typedef struct feat_datasheet
+{
+	string Oid;
+	int feature_index;
+	Mat feature;
+}feat_datasheet;
 #endif //end _DB_COMMON_

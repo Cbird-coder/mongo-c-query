@@ -1,25 +1,23 @@
-/**
-*Copyright (C) 2017
-*create by Caiyunlong
-*email:caiyunlong2012@gmail.com
-**/
+/** ******************** *******
+**auther:caiyunlong.2017
+*******************************/
 #ifndef FACEFEATURE_
 #define FACEFEATURE_
 #include "mongdb_face.h"
 #include "image_process.h"
 
-#define MAX_SAME_FEATURE 20
-
-typedef struct personinput
-{
-  int id_seq;
-  string name;
-  string gender;
-  int age;
-} personinput;
+#define MAX_SAME_FEATURE 50
+typedef struct person_info {
+		string name;
+		int age;
+		string gender;
+		int id_seq;
+}person_info;
 
 class featureDB
 {
+  int feature_index;
+  int min_age;
 public:
 	/*
       * construction function.
@@ -30,35 +28,34 @@ public:
     */
 	~featureDB();
   /*
-  *  get total person number 
+  *  get total person number
   */
-  int face_feature_get_person_count();
-	/*
-       * get all the people's names in the database.
-       * the result is saved in namelist vector 
-    */
-	void face_feature_getnamelist_db(std::vector<std::string> &namelist);
+  int face_feature_get_person_count(int &max_id);
 	/*
       * add people's information to database.
       * the input :id_seq,name,gender,age,feature
     */
-	int face_feature_add_db(personinput input,Mat feature_input);
+	int face_feature_add_db(person_info person,Mat feature_input,std::vector<feat_datasheet> &featurelist,
+                                                                  std::vector<databaseinfo> &personinfolist);
+  /*
+  *****
+  */
+  int face_feature_getFeature(std::vector<feat_datasheet> &featurelist);
+  int face_feature_getPersonInfo(std::vector<databaseinfo> &personinfolist);
 	/*
       * use name,query people's information from database
-      * the input : name,for query.
-      * the output : age,gender,feature_output
     */
-	int face_feature_query_db(personinput input,databaseinfo &result);
+	int face_feature_query_db(int id,databaseinfo &result);
   /*
   *update database
   */
-  int face_feature_update_age_db(personinput input,int age);
-  int face_feature_update_feature(personinput person,Mat feature);
+  int face_feature_update_age_db(person_info input,int age);
 	/*
       * delete people's information  by people'name.
       *input:name
     */
-	void face_feature_delete_db(personinput input);
+	void face_feature_delete_db(person_info person,std::vector<feat_datasheet> &featurelist,
+                                                    std::vector<databaseinfo> &personinfolist);
   /*
   *clear database
   */
